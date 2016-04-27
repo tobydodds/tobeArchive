@@ -1,0 +1,12 @@
+﻿@{
+    var contentItemShapes = (Func<IEnumerable<dynamic>>)Model.BuildShapes;
+}
+
+<div style="margin-top: 40px">
+    <table>
+        @foreach (dynamic contentItem in contentItemShapes())
+        {
+        @Display(contentItem)
+        }
+    </table>
+</div>

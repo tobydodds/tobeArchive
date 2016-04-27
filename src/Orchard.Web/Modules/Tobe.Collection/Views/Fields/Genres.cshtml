@@ -1,0 +1,15 @@
+﻿@using Tobe.Collection.Fields
+@using Tobe.Collection.Models
+@{
+    var field = (GenresField)Model.ContentField;
+    var genres = (IList<Genre>)Model.Genres;
+}
+@if (genres.Any())
+{
+    <div style="width: 25%; float: left">
+        <span class="labels">Genre(s)</span>
+    </div>
+    <div style="width: 75%; float: left">
+        @T("{0}", String.Join(", ", genres.Select(x => x.Name)))
+    </div>
+}

@@ -1,0 +1,115 @@
+﻿@using Orchard.ContentManagement
+@using Tobe.Collection.Models
+@model Tobe.Collection.ViewModels.AgentViewModel
+
+@{
+    var albumArtistGroups = Model.RelatedAlbumArtists.OrderBy(x => x.Album.OriginalReleaseDate).GroupBy(x => x.Album).ToArray();
+    var albumCreditGroups = Model.RelatedAlbumCredits.GroupBy(x => x.Album).ToArray();
+}
+
+<h1>@Model.Name</h1>
+
+@if (albumArtistGroups.Any())
+{
+    <fieldset>
+        <legend>@T("Artist Credits")</legend>
+            @foreach (var albumArtistGroup in albumArtistGroups)
+            {
+            var album = albumArtistGroup.First().Album;
+            var artistsPart = album.As<ArtistsContainerPart>();
+            var artists = artistsPart.Artists.ToArray();
+            var releaseDate = album.OriginalReleaseDate != null ? "{0} ({1:yyyy})" : "{0}";
+
+            if (WorkContext.CurrentUser != null) {
+                <div>
+                    <div style="float: left">
+                        @if (artists.Any()) {
+                            foreach (var artist in artists) {
+                                @artist.Agent.Name
+                                if (artist.Delimiter != null) {
+                                    @artist.Delimiter.Name
+                                }
+                            }
+                        }
+                    </div>
+                    <div style="float: left;margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)</div>
+                    <div class="editlink" style="float: left; margin: 0 20px 0 20px !important;">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
+                </div>
+                <br/>
+            }
+            else
+            {
+                <div>
+                    <div style="float: left">
+                        @if (artists.Any()) {
+                            foreach (var artist in artists) {
+                                @artist.Agent.Name
+                                if (artist.Delimiter != null) {
+                                    @artist.Delimiter.Name
+                                }
+                            }
+                        }
+                    </div>                    
+                    <div style="float: left;margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)</div>
+                </div>
+                <br/>
+            }
+            }
+    </fieldset>
+}
+
+<br/><br/>
+@if (albumCreditGroups.Any())
+{
+    <fieldset>
+        <legend>@T("Production Credits")</legend>
+        @foreach (var albumCreditGroup in albumCreditGroups)
+        {
+        var album = albumCreditGroup.First().Album;
+        var artistsPart = album.As<ArtistsContainerPart>();
+        var artists = artistsPart.Artists.ToArray();
+        var releaseDate = album.OriginalReleaseDate != null ? "{0} ({1:yyyy})" : "{0}";
+        var role = albumCreditGroup.First().Role;
+
+        if (WorkContext.CurrentUser != null)
+        {
+        <div>
+            <div style="float: left">
+                @if (artists.Any()) {
+                    foreach (var artist in artists) {
+                        @artist.Agent.Name
+                        if (artist.Delimiter != null) {
+                            @artist.Delimiter.Name
+                        }
+                    }
+                }
+            </div>             
+            <div style="float: left;margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)
+            </div>
+            <div style="float: left;margin-left: 5px"> - @role</div>
+            <div class="editlink" style="float: left; margin: 0 20px 0 20px !important;">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
+        </div>
+            <br />
+        }
+        else
+        {
+        <div>
+            <div style="float: left">
+                @if (artists.Any()) {
+                    foreach (var artist in artists) {
+                        @artist.Agent.Name
+                        if (artist.Delimiter != null) {
+                            @artist.Delimiter.Name
+                        }
+                    }
+                }
+            </div>             
+            <div style="float: left;margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)
+            </div>
+            <div style="float: left;margin-left: 5px"> - @role</div>
+        </div>
+            <br />
+        }
+        }
+    </fieldset>
+}

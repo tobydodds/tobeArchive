@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Placement>
+  <Place Fields_Boolean="-"/>
+  <Place Parts_Artists_Edit="Content:5" />
+  <Place Parts_Credits_Edit="Content:21" />
+  <Place Parts_Album_Edit="Content:10" />
+  <Place Fields_Countries_Edit="Content:12" />
+  <Place Fields_Genres_Edit="Content:13" />
+  <Place Fields_RecordLabels_Edit="Content:14" />
+  
+  <Place Parts_Common_Body="-"
+         Parts_Common_Metadata="-"
+         Parts_Common_Metadata_Summary="-"
+         Parts_Album_Edit="Content:10"
+         Parts_Common_Owner_Edit="-"/>
+  <Match ContentType="Album">
+    <Match DisplayType="Detail">
+      <Place
+           Parts_Artists="Content:1"
+           Parts_Album="Content:10"
+           Parts_Credits="Content:15"/>
+        <Place Fields_Countries="Content:12" />
+        <Place Fields_Genres="Content:13" />
+        <Place Fields_RecordLabels="Content:14" />
+        <Place Fields_ImageMultiPicker="Content:16" />
+    </Match>
+    <Match DisplayType="Summary">
+      <Place Parts_Common_Body_Summary="-"
+             Parts_Album="-"/>
+    </Match>
+  </Match>
+</Placement>

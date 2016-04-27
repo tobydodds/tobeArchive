@@ -1,0 +1,15 @@
+﻿@using Tobe.Collection.Fields
+@using Tobe.Collection.Models
+@{
+    var field = (CountriesField) Model.ContentField;
+    var countries = (IList<Country>)Model.Countries;
+}
+@if (countries.Any())
+{
+    <div style="width: 25%; float: left">
+        <span class="labels">Country(s)</span>
+    </div>
+    <div style="width: 75%; float: left">
+        @T("{0}", String.Join(", ", countries.Select(x => x.Name)))
+    </div>
+}

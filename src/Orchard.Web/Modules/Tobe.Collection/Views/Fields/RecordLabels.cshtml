@@ -1,0 +1,15 @@
+﻿@using Tobe.Collection.Fields
+@using Tobe.Collection.Models
+@{
+    var field = (RecordLabelsField) Model.ContentField;
+    var recordLabels = (IList<RecordLabel>)Model.RecordLabels;
+}
+@if (recordLabels.Any())
+{
+    <div style="width: 25%; float: left">
+        <span class="labels">Record Label(s)</span>
+    </div>
+    <div style="width: 75%; float: left">
+        @T("{0}", String.Join(", ", recordLabels.Select(x => x.Name)))
+    </div>
+}

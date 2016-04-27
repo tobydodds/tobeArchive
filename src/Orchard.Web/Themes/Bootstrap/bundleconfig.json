@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Scripts/jquery.infinite-scroll-helper.js",
+    "inputFiles": [
+      "Scripts/jquery.infinite-scroll-helper.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ng-infinite-scroll.js",
+    "inputFiles": [
+      "Scripts/ng-infinite-scroll.js"
+    ]
+  }
+]

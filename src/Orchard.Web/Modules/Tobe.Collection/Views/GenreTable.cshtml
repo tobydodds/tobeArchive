@@ -1,0 +1,35 @@
+﻿@using Tobe.Collection.Models
+@using Tobe.Collection.ViewModels
+@{
+    var genres = (IEnumerable<TableRowData<Genre>>)Model.Genres;
+}
+<table class="items">
+    <thead>
+        <tr>
+            <th>@T("Name")</th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginFormAntiForgeryPost())
+    {
+        foreach (var row in genres)
+        {
+            var genre = row.Data;
+            <tr>
+                <td>@genre.Name</td>
+                <td>
+                    @Html.ActionLink(T("Edit").Text, "Edit", "GenresAdmin", new { area = "Tobe.Collection", genre.Id }, null) |
+                    @if (row.IsDeletable)
+                    {
+                        @Html.ActionLink(T("Delete").Text, "Delete", "GenresAdmin", new { area = "Tobe.Collection", genre.Id }, new { itemprop = "RemoveUrl UnsafeUrl" })
+                    }
+                    else
+                    {
+                        <span class="delete disabled" title="@T("You cannot delete this Genre as it is being referenced by at least one item.")">@T("Delete")</span>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Display(Model.Pager)

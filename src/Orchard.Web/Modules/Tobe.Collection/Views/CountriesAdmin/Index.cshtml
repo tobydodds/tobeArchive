@@ -1,0 +1,19 @@
+﻿@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery");
+    Script.Include("pager.js");
+    Layout.Title = T("Countries");
+}
+
+<div class="bulk-actions">
+    <label for="nameFilter">Filter:</label>
+    <input type="text" name="nameFilter" id="nameFilter" class="text-box" />
+</div>
+<div class="manage">
+    @Html.ActionLink(T("New Country").Text, "Create", "CountriesAdmin", new { area = "Tobe.Collection" }, new { @class = "button primaryAction" })
+</div>
+<fieldset>
+    <div data-filter-input="nameFilter" data-filter-url="@Url.Action("Filter", "CountriesAdmin")">
+        @Display(Model.CountryTable)
+    </div>
+</fieldset>

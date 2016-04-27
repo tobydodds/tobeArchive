@@ -1,0 +1,30 @@
+﻿ul.credits-input {
+    list-style: none;
+}
+
+ul.credits-input a,
+ul.credits-input .label {
+    font-size: 0.8em;
+}
+
+ul.credits-input .label {
+    font-weight: bold;
+}
+
+ul.credits-input li {
+    float: left;
+    margin-right: 1.2em;
+}
+
+ul.credits-input:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+table.items.credits {
+    width: auto;
+    min-width: 500px;
+}

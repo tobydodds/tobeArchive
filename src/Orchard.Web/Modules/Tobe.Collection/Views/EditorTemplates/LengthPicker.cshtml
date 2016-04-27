@@ -1,0 +1,7 @@
+﻿@using Tobe.Collection.Models
+@{
+    var lengths = (IEnumerable<Length>)ViewBag.Lengths;
+    var currentValue = ViewData.TemplateInfo.FormattedModelValue as int?;
+    var options = lengths.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString(), Selected = x.Id == currentValue });
+}
+@Html.DropDownList("", options, @T("Choose a length").ToString())

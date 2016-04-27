@@ -1,0 +1,11 @@
+﻿@model Tobe.Collection.ViewModels.CreateRecordLabelViewModel
+
+<h2>@T("New Record Label")</h2>           
+@using (Html.BeginFormAntiForgeryPost("Create")) {
+    @Html.LabelFor(c => c.Name)
+    @Html.TextBoxFor(c => c.Name)
+    @Html.ValidationMessageFor(c => c.Name)
+    <div style="margin-top: 10px;">
+        <button type="submit" class="primaryAction">@T("Create")</button>
+    </div>
+}

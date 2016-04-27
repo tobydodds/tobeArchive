@@ -1,0 +1,7 @@
+﻿@using Tobe.Collection.Models
+@{
+    var formats = (IEnumerable<Format>)ViewBag.Formats;
+    var currentValue = ViewData.TemplateInfo.FormattedModelValue as int?;
+    var options = formats.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString(), Selected = x.Id == currentValue });
+}
+@Html.DropDownList("", options, @T("Choose a format").ToString())

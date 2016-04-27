@@ -1,0 +1,84 @@
+﻿@model Tobe.Collection.ViewModels.AlbumViewModel
+@{
+    Style.Require("jQueryUI_Orchard");
+    Script.Require("jQueryUI_Autocomplete");
+    Script.Include("agent-autocomplete.js");
+}
+<fieldset>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ArtistDisplayName, T("Artist Display Name"))
+        @Html.TextBoxFor(m => m.ArtistDisplayName, new { @class = "text medium" })
+    </div>    
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, T("Description"))
+        @Html.TextAreaFor(m => m.Description, new { @class = "text", style = "width:100%;height:100px" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Notes, T("Notes"))
+        @Html.TextAreaFor(m => m.Notes, new { @class = "text", style = "width:100%;height:100px" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AmgRatingId, T("AMG Rating"))
+        @Html.EditorFor(m => m.AmgRatingId, new { AmgRatings = Model.AvailableAmgRatings })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FormatId, T("Format"))
+        @Html.EditorFor(m => m.FormatId, new { Formats = Model.AvailableFormats })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LengthId, T("Length"))
+        @Html.EditorFor(m => m.LengthId, new { Lengths = Model.AvailableLengths })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CatalogNumber, T("Catalog Number"))
+        @Html.TextBoxFor(m => m.CatalogNumber, new { @class = "text medium" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LocalNumber, T("Local Number"))
+        @Html.TextBoxFor(m => m.LocalNumber, new { @class = "text medium" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PurchasedAt, T("Purchased At"))
+        @Html.TextBoxFor(m => m.PurchasedAt, new { @class = "text medium" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PricePaid, T("Price Paid"))
+        @Html.TextBoxFor(m => m.PricePaid, new { @class = "text medium" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RecordedAt, T("Recorded At"))
+        @Html.TextBoxFor(m => m.RecordedAt, new { @class = "text medium" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.OriginalReleaseDate, T("Original Release Date"))
+        @Html.TextBoxFor(m => m.OriginalReleaseDate, "{0:MM/dd/yyyy}", new { @class = "text medium" })
+        <span class="hint">@T("Original or first release date, mm/dd/yyyy format, enter 1/1/yyyy when only year is known")</span>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.VersionReleaseDate, T("Version Release Date"))
+        @Html.TextBoxFor(m => m.VersionReleaseDate, "{0:MM/dd/yyyy}", new { @class = "text medium" })
+        <span class="hint">@T("Reissue or version release date, mm/dd/yyyy format, enter 1/1/yyyy when only year is known")</span>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PurchaseDate, T("Purchase Date"))
+        @Html.TextBoxFor(m => m.PurchaseDate, "{0:MM/dd/yyyy}", new { @class = "text medium" })
+        <span class="hint">@T("Purchase date, mm/dd/yyyy format, enter 1/1/yyyy when only year is known")</span>
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.ColoredVinyl)
+        @Html.LabelFor(m => m.ColoredVinyl, T("Colored Vinyl").Text, new { @class = "forcheckbox" })
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.CoverArtPick)
+        @Html.LabelFor(m => m.CoverArtPick, T("Cover Art Pick").Text, new { @class = "forcheckbox" })
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.OriginalPressing)
+        @Html.LabelFor(m => m.OriginalPressing, T("Original Pressing").Text, new { @class = "forcheckbox" })
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.TobyPick)
+        @Html.LabelFor(m => m.TobyPick, T("Toby Pick").Text, new { @class = "forcheckbox" })
+    </div>
+</fieldset>

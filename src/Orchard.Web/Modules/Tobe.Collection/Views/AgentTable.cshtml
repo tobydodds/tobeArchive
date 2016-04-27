@@ -1,0 +1,31 @@
+﻿@using Tobe.Collection.Models
+@using Tobe.Collection.ViewModels
+@{
+    var agents = (IEnumerable<TableRowData<Agent>>)Model.Agents;
+}
+<table class="items">
+    <thead>
+        <tr>
+            <th>@T("Name")</th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginFormAntiForgeryPost()) {
+        foreach (var row in agents) {
+            var agent = row.Data;
+            <tr>
+                <td>@agent.Name</td>
+                <td>
+                    @Html.ActionLink(T("Edit").Text, "Edit", "AgentsAdmin", new { area = "Tobe.Collection", agent.Id }, null) |
+                    @if (row.IsDeletable) {
+                        @Html.ActionLink(T("Delete").Text, "Delete", "AgentsAdmin", new { area = "Tobe.Collection", agent.Id }, new { itemprop = "RemoveUrl UnsafeUrl" })
+                    }
+                    else {
+                        <span class="delete disabled" title="@T("You cannot delete this Agent as it is being referenced by at least one Credit.")">@T("Delete")</span>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Display(Model.Pager)

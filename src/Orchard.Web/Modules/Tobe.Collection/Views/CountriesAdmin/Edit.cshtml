@@ -1,0 +1,19 @@
+﻿@model Tobe.Collection.ViewModels.EditCountryViewModel
+<h2>@T("Edit Country")</h2>
+@using (Html.BeginFormAntiForgeryPost("Edit")) {
+    @Html.HiddenFor(a => a.Id)
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)
+    <div style="margin-top: 10px">
+        <button type="submit" class="primaryAction">@T("Save")</button>
+    </div>
+}
+<br />
+<h2>@T("Related Content")</h2>
+<ul>
+    @foreach (var content in Model.RelatedContentItems) {
+        <li>@Html.ItemEditLink(content)</li>
+    }
+</ul>
+

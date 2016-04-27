@@ -1,0 +1,17 @@
+﻿@model Tobe.Collection.ViewModels.CreateAgentViewModel
+<h2>@T("New Agent")</h2>
+@using (Html.BeginFormAntiForgeryPost("Create")) {
+    @Html.Hidden("returnUrl", Request.QueryString["returnUrl"])
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name, new { @class = "text medium" })
+    @Html.ValidationMessageFor(a => a.Name)
+    @Html.LabelFor(a => a.NameSort)
+    @Html.TextBoxFor(a => a.NameSort, new { @class = "text medium" })
+    @Html.ValidationMessageFor(a => a.NameSort)
+    @Html.LabelFor(a => a.FileUnder)
+    @Html.TextBoxFor(a => a.FileUnder, new { @class = "text medium" })
+    @Html.ValidationMessageFor(a => a.FileUnder)
+    <div style="margin-top: 10px;">
+        <button type="submit" class="primaryAction">@T("Create")</button>
+    </div>
+}

@@ -1,0 +1,12 @@
+﻿@model Tobe.Collection.ViewModels.EditRoleViewModel
+<h2>@T("Edit Role")</h2>
+@using (Html.BeginFormAntiForgeryPost("Edit")) {
+    @Html.HiddenFor(a => a.Id)
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name, new { @class = "text medium" })
+    @Html.ValidationMessageFor(a => a.Name)
+        
+    <div style="margin-top: 10px">
+        <button type="submit" class="primaryAction">@T("Save")</button>
+    </div>
+}

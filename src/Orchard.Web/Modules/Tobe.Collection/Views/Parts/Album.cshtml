@@ -1,0 +1,197 @@
+﻿@using Tobe.Collection.Helpers
+@using Tobe.Collection.Models
+@{
+    var contentItem = Model.ContentItem;
+    var albumPart = (AlbumPart)Model.ContentPart;
+}
+
+
+<div class="recording-details">
+    @if (albumPart.CatalogNumber != null)
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Catalog Number</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @T("{0}", albumPart.CatalogNumber)
+        </div>
+    </div>
+    }
+    @if (albumPart.LocalNumber != null)
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Local Number</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @T("{0}", albumPart.LocalNumber)
+        </div>
+    </div>
+    }    
+    @if (albumPart.Format.Name != null)
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Format</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @T("{0}", albumPart.Format.Name)
+        </div>
+    </div>
+    }
+    @if (albumPart.Length.Name != null)
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Length</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @T("{0}", albumPart.Length.Name)
+        </div>
+    </div>
+    }
+    @if (albumPart.AmgRating.Name != "n/a")
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">AMG Rating</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @T("{0}", albumPart.AmgRating.Name)
+        </div>
+    </div>
+    }
+    @if (albumPart.Description != null)
+    {
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Description</span>
+        </div>
+        <div style="width: 35%; float: left">
+            @Html.Raw(albumPart.Description)
+        </div>
+    </div>
+        }
+    @if (albumPart.Notes != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Notes</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @Html.Raw(albumPart.Notes)
+            </div>
+        </div>
+        }
+        @if (albumPart.OriginalReleaseDate != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Original Release Date</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.OriginalReleaseDate)
+            </div>
+        </div>
+    }
+        @if (albumPart.PurchaseDate != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Purchase Date</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.PurchaseDate.Value.ToString("d"))
+            </div>
+        </div>
+    }
+        @if (albumPart.PurchasedAt != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Store</span>
+            </div>
+            <div style="width: 50%; float: left">
+                @T("{0}", albumPart.PurchasedAt)
+            </div>
+        </div>
+            }
+        @if (albumPart.PricePaid != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Price Paid</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.PricePaid.Value.ToString("C"))
+            </div>
+        </div>
+            }
+        @if (albumPart.RecordedAt != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Recorded At</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.RecordedAt)
+            </div>
+        </div>
+                }
+        @if (albumPart.VersionReleaseDate != null)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Version Release Date</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.VersionReleaseDate)
+            </div>
+        </div>
+            }
+        @if (albumPart.ColoredVinyl)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Colored Vinyl</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.ColoredVinyl)
+            </div>
+        </div>
+            }
+        @if (albumPart.CoverArtPick)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Cover Art Pick</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.CoverArtPick)
+            </div>
+        </div>
+            }
+        @if (albumPart.OriginalPressing)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Original Pressing</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.OriginalPressing)
+            </div>
+        </div>
+            }
+        @if (albumPart.TobyPick)
+    {
+        <div style="width: 100%; float: left">
+            <div style="width: 25%; float: left">
+                <span class="labels">Toby Pick</span>
+            </div>
+            <div style="width: 35%; float: left">
+                @T("{0}", albumPart.TobyPick)
+            </div>
+            </div>
+            }
+

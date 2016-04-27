@@ -1,0 +1,45 @@
+﻿@model Tobe.Collection.ViewModels.CountriesViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery").AtFoot();
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("countries-field-editor.js").AtFoot();
+
+    var countriesJson = Json.Encode(Model.Countries);
+}
+
+<fieldset data-countries="@countriesJson" data-prefix="@ViewData.TemplateInfo.GetFullHtmlFieldName("")">
+    @*<legend>@T(Model.ContentField.DisplayName)</legend>*@
+    <div class="group">
+        <ul class="countries-input">
+            <li>
+                <div class="pull-left label"><h3>@T("Countries")</h3></div>
+                <div class="pull-right"><a href="@Url.Action("Create", "CountriesAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                <div class="clear"></div>
+                @Html.DropDownList("AllCountries", new SelectList(Model.AllCountries.OrderBy(x => x.Name), "Id", "Name"), T("Select country to add...").ToString(), new { @class = "all-countries" })
+            </li>
+            <li>
+                <br />
+                <input type="button" class="button grey" value="Add" data-bind="click: add, enable: addEnabled" />
+            </li>
+        </ul>
+    </div>
+    <table class="items countries" data-bind="visible: hasCountries">
+        <thead>
+            <tr>
+                <th>@T("Name")</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: countries">
+            <tr>
+                <td>
+                    <input type="hidden" data-bind="attr: { name: idInputName }, value: id" />
+                    <input type="hidden" data-bind="attr: { name: nameInputName }, value: name" />
+                    <a href="#" data-bind="text: name, attr: { href: editUrl($element) }" data-edit-url="@Url.Action("Edit", "CountriesAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                </td>
+                <td><a href="#" class="delete button grey" data-bind="click: $parent.remove">@T("Remove")</a></td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

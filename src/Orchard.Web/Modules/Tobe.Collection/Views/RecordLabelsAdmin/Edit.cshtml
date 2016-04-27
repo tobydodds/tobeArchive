@@ -1,0 +1,18 @@
+﻿@model Tobe.Collection.ViewModels.EditRecordLabelViewModel
+<h2>@T("Edit Record Label")</h2>
+@using (Html.BeginFormAntiForgeryPost("Edit")) {
+    @Html.HiddenFor(a => a.Id)
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)     
+    <div style="margin-top: 10px">
+        <button type="submit" class="primaryAction">@T("Save")</button>
+    </div>
+}
+<br />
+<h2>@T("Related Albums")</h2>
+<ul>
+    @foreach (var album in Model.Albums) {
+        <li>@Html.ItemEditLink(album)</li>
+    }
+</ul>

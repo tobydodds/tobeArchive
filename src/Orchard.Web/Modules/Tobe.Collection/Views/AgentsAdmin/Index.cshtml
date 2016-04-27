@@ -1,0 +1,19 @@
+﻿@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery");
+    Script.Include("pager.js");
+    Layout.Title = T("Agents");
+}
+
+<div class="bulk-actions">
+    <label for="nameFilter">Filter:</label>
+    <input type="text" name="nameFilter" id="nameFilter" class="text-box" />
+</div>
+<div class="manage">
+    @Html.ActionLink(T("New Agent").Text, "Create", "AgentsAdmin", new { area = "Tobe.Collection" }, new { @class = "button primaryAction" })
+</div>
+<fieldset>
+    <div data-filter-input="nameFilter" data-filter-url="@Url.Action("Filter", "AgentsAdmin")">
+        @Display(Model.AgentTable)
+    </div>
+</fieldset>

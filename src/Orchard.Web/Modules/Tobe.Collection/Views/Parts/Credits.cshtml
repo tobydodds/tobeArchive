@@ -1,0 +1,24 @@
+﻿@using Tobe.Collection.Models
+@{
+    var part = (CreditsContainerPart)Model.ContentPart;
+}
+@if (part.Credits.Any())
+{
+var agentGroups = part.Credits.GroupBy(x => x.Agent);
+    <div style="width: 25%; float: left">
+        <span class="labels">Credits</span>
+    </div>
+    <div style="width: 75%; float: left">
+        <ul style="list-style: none; padding-left:0;">
+            @foreach (var group in agentGroups)
+            {
+                var agent = group.Key;
+                var agentName = agent.Name;
+                var roles = String.Join("; ", group.Where(x => x.Role != null).Select(x => x.Role.Name));
+                <li>
+                    @Html.ActionLink(agentName, "DetailsByName", "Agent", new { area = "Tobe.Collection", agentName }, null) - @roles
+                </li>
+            }
+        </ul>
+    </div>
+}

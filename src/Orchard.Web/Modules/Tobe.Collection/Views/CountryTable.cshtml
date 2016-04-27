@@ -1,0 +1,35 @@
+﻿@using Tobe.Collection.Models
+@using Tobe.Collection.ViewModels
+@{
+    var countries = (IEnumerable<TableRowData<Country>>)Model.Countries;
+}
+<table class="items">
+    <thead>
+        <tr>
+            <th>@T("Name")</th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginFormAntiForgeryPost())
+    {
+        foreach (var row in countries)
+        {
+            var country = row.Data;
+            <tr>
+                <td>@country.Name</td>
+                <td>
+                    @Html.ActionLink(T("Edit").Text, "Edit", "CountriesAdmin", new { area = "Tobe.Collection", country.Id }, null) |
+                    @if (row.IsDeletable)
+                    {
+                        @Html.ActionLink(T("Delete").Text, "Delete", "CountriesAdmin", new { area = "Tobe.Collection", country.Id }, new { itemprop = "RemoveUrl UnsafeUrl" })
+                    }
+                    else
+                    {
+                        <span class="delete disabled" title="@T("You cannot delete this Country as it is being referenced by at least one Album.")">@T("Delete")</span>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Display(Model.Pager)

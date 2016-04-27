@@ -1,0 +1,27 @@
+@{
+    Layout.Title = Model.Title;
+
+    var contentItem = Model.ContentItem;
+}
+
+<br /><br />
+<div style="width: 25%; float: left">
+    <span class="labels">Title</span>
+</div>
+@if (WorkContext.CurrentUser != null)
+{
+    <div>
+        <div style="width: 50%; float: left">
+            @Model.Title<a style="margin-left: 20px; color:#999" href="/Admin/Contents/Edit/@contentItem.Id">EDIT</a>
+            
+        </div>
+    </div>
+}
+else
+{
+<div style="width: 50%; float: left">
+    @Model.Title
+</div>
+}
+ 
+<br />

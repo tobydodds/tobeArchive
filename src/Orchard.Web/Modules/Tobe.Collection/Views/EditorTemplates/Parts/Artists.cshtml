@@ -1,0 +1,59 @@
+﻿@model Tobe.Collection.ViewModels.ArtistsContainerViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Style.Include("artists-editor.css");
+    Script.Require("jQueryUI_Autocomplete");
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("artists-editor.js").AtFoot();
+
+    var artists = Json.Encode(Model.Artists);
+}
+<div id="artistsEditor" data-artists="@artists">
+    <fieldset>
+        <legend>@T("Artists")</legend>
+        <div class="group">
+            <ul class="artists-input">
+                <li>
+                    <div class="pull-left label">@T("Agent")</div>
+                    <div class="pull-right"><a href="@Url.Action("Create", "AgentsAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                    <div class="clear"></div>
+                    <input type="text" class="text medium all-agents" data-source-url="@Url.Action("Search", "Agent", new { area = "Tobe.Collection" })" />
+                </li>
+                <li>
+                    <div class="pull-left label">@T("Delimiter")</div>
+                    <div class="pull-right"><a href="@Url.Action("Create", "DelimitersAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                    <div class="clear"></div>
+                    @Html.DropDownList("AllDelimiters", new SelectList(Model.AllDelimiters, "Id", "Name"), T("Select delimiter to add...").ToString(), new { @class = "all-delimiters" })
+                </li>
+                <li>
+                    <br />
+                    <input type="button" class="button grey" value="Add" data-bind="click: addArtist, enable: addArtistEnabled" />
+                </li>
+            </ul>
+        </div>
+        <table class="items artists" data-bind="visible: hasArtists">
+            <thead>
+                <tr>
+                    <th>@T("Agent") </th>
+                    <th>@T("Delimiter")</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: artists">
+                <tr data-bind="visible: !removed()">
+                    <td>
+                        <input type="hidden" data-bind="attr: { name: artistIdInputName }, value: id" />
+                        <input type="hidden" data-bind="attr: { name: agentIdInputName }, value: agent.id" />
+                        <input type="hidden" data-bind="attr: { name: agentNameInputName }, value: agent.name" />
+                        <input type="hidden" data-bind="attr: { name: delimiterIdInputName }, value: delimiter.id" />
+                        <input type="hidden" data-bind="attr: { name: delimiterNameInputName }, value: delimiter.name" />
+                        <input type="hidden" data-bind="attr: { name: removedInputName }, value: removed" />
+                        <a href="#" data-bind="text: agent.name, attr: { href: agent.editUrl($element) }" data-edit-url="@Url.Action("Edit", "AgentsAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                    </td>
+                    <td><a href="#" data-bind="text: delimiter.name, attr: { href: delimiter.editUrl($element) }" data-edit-url="@Url.Action("Edit", "DelimitersAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a></td>
+                    <td><a href="#" class="delete button grey" data-bind="click: $parent.removeArtist">@T("Remove")</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>

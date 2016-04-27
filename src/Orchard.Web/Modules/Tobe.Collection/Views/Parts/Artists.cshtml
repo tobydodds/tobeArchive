@@ -1,0 +1,28 @@
+﻿@using Tobe.Collection.Helpers
+@using Tobe.Collection.Models
+@using Orchard.Core.Title.Models
+@{
+    var contentItem = Model.ContentItem;
+    var autoroutePart = contentItem.AutoroutePart.DisplayAlias;
+    var artistsPart = (ArtistsContainerPart)contentItem.ArtistsContainerPart;
+    var artists = artistsPart.Artists.ToArray();
+}
+
+<div style="width: 25%; float: left">
+    <span class="labels">Artist(s)</span>
+</div>
+<div style="width: 75%; float: left">
+    @if (artists.Any())
+    {
+    foreach (var artist in artists)
+    {
+    var agentName = artist.Agent.Name;
+    @Html.ActionLink(agentName, "DetailsByName", "Agent", new { area = "Tobe.Collection", agentName }, null)
+        @*@artist.Agent.Name*@
+    if (artist.Delimiter != null)
+    {
+    @artist.Delimiter.Name
+    }
+    }
+    }
+</div>

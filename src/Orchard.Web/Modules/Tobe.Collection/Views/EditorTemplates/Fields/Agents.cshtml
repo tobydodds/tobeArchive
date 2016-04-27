@@ -1,0 +1,43 @@
+﻿@model Tobe.Collection.ViewModels.AgentsViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery").AtFoot();
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("agents-field-editor.js").AtFoot();
+
+    var agentsJson = Json.Encode(Model.Agents);
+}
+
+<fieldset class="agents-field" data-agents="@agentsJson" data-prefix="@ViewData.TemplateInfo.GetFullHtmlFieldName("")">
+    <legend>@T(Model.ContentField.DisplayName)</legend>
+    <div class="group">
+        <ul class="agents-input">
+            <li>
+                <div class="clear"></div>
+                <input type="text" class="text medium all-agents" data-source-url="@Url.Action("Search", "Agent", new { area = "Tobe.Collection" })" />
+            </li>
+            <li>
+                <br />
+                <input type="button" class="button grey" value="Add" data-bind="click: add, enable: addEnabled" />
+            </li>
+        </ul>
+    </div>
+    <table class="items agents" data-bind="visible: hasAgents">
+        <thead>
+            <tr>
+                <th>@T("Name")</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: agents">
+            <tr>
+                <td>
+                    <input type="hidden" data-bind="attr: { name: idInputName }, value: id" />
+                    <input type="hidden" data-bind="attr: { name: nameInputName }, value: name" />
+                    <a href="#" data-bind="text: name, attr: { href: editUrl($element) }" data-edit-url="@Url.Action("Edit", "AgentsAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                </td>
+                <td><a href="#" class="delete button grey" data-bind="click: $parent.remove">@T("Remove")</a></td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

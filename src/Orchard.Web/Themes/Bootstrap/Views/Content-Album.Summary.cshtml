@@ -1,0 +1,30 @@
+﻿@using Tobe.Collection.Helpers
+@using Tobe.Collection.Models
+@using Orchard.Core.Title.Models
+@{
+    var contentItem = Model.ContentItem;
+    var titlePart = (TitlePart)contentItem.TitlePart;
+    var autoroutePart = contentItem.AutoroutePart.DisplayAlias;
+    var album = (AlbumPart)contentItem.AlbumPart;
+    var releaseDate = album.OriginalReleaseDate != null ? "{0} ({1:yyyy})" : "{0}";
+}
+
+    @if (WorkContext.CurrentUser != null) {
+            <div>
+                <div style="float: left">
+                    @album.ArtistDisplayName
+                </div>                    
+                <div style="float: left; margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)</div>
+                <div class="editlink" style="float: left; margin: 0 20px 0 20px !important;">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
+            </div>
+            <br/>
+        }
+        else {
+            <div>
+                <div style="float: left">
+                    @album.ArtistDisplayName
+                </div>                   
+                <div style="float: left; margin-left: 8px">@Html.ItemDisplayLink(String.Format(releaseDate, album.Name, album.OriginalReleaseDate), album)</div>
+            </div>
+            <br/>            
+        }

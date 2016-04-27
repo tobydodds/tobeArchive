@@ -1,0 +1,29 @@
+﻿@using Amba.ImagePowerTools.Fields
+@using Amba.ImagePowerTools.HtmlHelpers
+@using System.Linq
+@using Amba.ImagePowerTools.Settings
+@{
+    var field = (ImageMultiPickerField)Model.Field;
+    var settings = (ImageMultiPickerFieldSettings)Model.Settings;
+}
+
+@if (field.Images.Any())
+{
+    <div style="width: 100%; float: left">
+        <div style="width: 25%; float: left">
+            <span class="labels">Image(s)</span>
+        </div>
+        <div class="image-item-list-box top-ten" style="width: 35%; float: left">
+            @foreach (var image in field.Images)
+            {
+            <div class="image-item" style="margin: 10px 20px 10px 0">
+                <a href="@Url.Content("~" + image.FilePath)" class="swipebox"
+                   title="@foreach (var customFieldDefinition in settings.CustomFieldsList) { @image[customFieldDefinition.Name] 
+                    }">
+                    @Html.ResizedImage(image.FilePath, height: 100, width: 100, htmlAttributes: new { alt = "test", @class = "pickerimage" })
+                </a>
+            </div>
+            }
+        </div>
+    </div>
+}

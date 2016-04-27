@@ -1,0 +1,14 @@
+﻿@model Tobe.Collection.Models.Genre
+<h1>@Model.Name</h1>
+
+@*<div style="margin-left: 25px">
+    <h2>@T("Albums")</h2>
+    <ul>
+        @foreach (dynamic album in Model.Albums) {
+            string title = album.ContentItem.TitlePart.Title;
+            string year = album.ContentItem.AlbumPart.ReleaseDate.ToString();
+            string linkText = String.Format("{0} ({1})", title, year);
+            <li>@Html.ItemDisplayLink(linkText, (IContent)album)</li>
+        }
+    </ul>
+</div>*@

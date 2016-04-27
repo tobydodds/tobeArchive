@@ -1,0 +1,97 @@
+﻿.group, .form-group {
+    margin-bottom: 0.8em;
+}
+
+.clear {
+    clear: both;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+span.delete.disabled {
+    color: #eaeaea;
+}
+
+.text.quarter {
+    width: 13em;
+}
+
+table.items.agents,
+table.items.genres,
+table.items.countries,
+table.items.recordLabels {
+    width: auto;
+    min-width: 550px;
+}
+
+ul.artist-name-input {
+    list-style: none;
+}
+
+ul.artist-name-input a,
+ul.artist-name-input .label {
+    font-size: 0.8em;
+}
+
+ul.artist-name-input .label {
+    font-weight: bold;
+}
+
+ul.artist-name-input li {
+    float: left;
+    margin-right: 1.2em;
+}
+
+ul.artist-name-input:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+table.items.artist-name {
+    width: auto;
+    min-width: 500px;
+}
+
+ul.content-field-input {
+    list-style: none;
+}
+
+ul.content-field-input li .label {
+    font-size: 1.2em;
+    margin-bottom: 0.4em;
+}
+
+ul.content-field-input a {
+    font-size: 0.8em;
+}
+
+ul.content-field-input li {
+    float: left;
+    margin-right: 1.2em;
+}
+
+ul.content-field-input:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+table.items.content-field {
+    width: auto;
+    min-width: 500px;
+}
+
+.content-button {
+    margin: 1.2em 0 0.5em 0;
+}

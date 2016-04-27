@@ -1,0 +1,46 @@
+﻿@using System.Web.UI.WebControls
+@model Tobe.Collection.ViewModels.GenresViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery").AtFoot();
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("genres-field-editor.js").AtFoot();
+
+    var genresJson = Json.Encode(Model.Genres);
+}
+
+<fieldset data-genres="@genresJson" data-prefix="@ViewData.TemplateInfo.GetFullHtmlFieldName("")">
+    @*<legend>@T(Model.ContentField.DisplayName)</legend>*@
+    <div class="group">
+        <ul class="genres-input">
+            <li>
+                <div class="pull-left label"><h3>@T("Genres")</h3></div>
+                <div class="pull-right"><a href="@Url.Action("Create", "GenresAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                <div class="clear"></div>
+                @Html.DropDownList("AllGenres", new SelectList(Model.AllGenres.OrderBy(x => x.Name), "Id", "Name"), T("Select genre to add...").ToString(), new { @class = "all-genres" })
+            </li>
+            <li>
+                <br />
+                <input type="button" class="button grey" value="Add" data-bind="click: add, enable: addEnabled" />
+            </li>
+        </ul>
+    </div>
+    <table class="items genres" data-bind="visible: hasGenres">
+        <thead>
+            <tr>
+                <th>@T("Name")</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: genres">
+            <tr>
+                <td>
+                    <input type="hidden" data-bind="attr: { name: idInputName }, value: id" />
+                    <input type="hidden" data-bind="attr: { name: nameInputName }, value: name" />
+                    <a href="#" data-bind="text: name, attr: { href: editUrl($element) }" data-edit-url="@Url.Action("Edit", "GenresAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                </td>
+                <td><a href="#" class="delete button grey" data-bind="click: $parent.remove">@T("Remove")</a></td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

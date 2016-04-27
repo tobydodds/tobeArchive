@@ -1,0 +1,31 @@
+﻿@using Tobe.Collection.Models
+@using Tobe.Collection.ViewModels
+@{
+    var roles = (IEnumerable<TableRowData<Role>>)Model.Roles;
+}
+<table class="items">
+    <thead>
+        <tr>
+            <th>@T("Name")</th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginFormAntiForgeryPost()) {
+        foreach (var row in roles) {
+            var role = row.Data;
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    @Html.ActionLink(T("Edit").Text, "Edit", "RolesAdmin", new {area = "Tobe.Collection", role.Id}, null) |
+                    @if (row.IsDeletable) {
+                        @Html.ActionLink(T("Delete").Text, "Delete", "RolesAdmin", new {area = "Tobe.Collection", role.Id}, new {itemprop = "RemoveUrl UnsafeUrl"})
+                    }
+                    else {
+                        <span class="delete disabled" title="@T("You cannot delete this Role as it is being referenced by at least one Credit.")">@T("Delete")</span>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Display(Model.Pager)

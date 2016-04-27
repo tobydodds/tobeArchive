@@ -1,0 +1,9 @@
+﻿@using Tobe.Collection.Fields
+@using Tobe.Collection.Models
+@{
+    var field = (AgentsField) Model.ContentField;
+    var agents = (IList<Agent>)Model.Agents;
+}
+@if (agents.Any()) {
+    <p>@T("{0}: {1}", field.DisplayName, String.Join(", ", agents.Select(x => x.Name)))</p>
+}

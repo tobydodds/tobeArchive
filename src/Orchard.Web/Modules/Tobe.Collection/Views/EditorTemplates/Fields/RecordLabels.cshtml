@@ -1,0 +1,45 @@
+@model Tobe.Collection.ViewModels.RecordLabelsViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Script.Require("jQuery").AtFoot();
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("record-labels-field-editor.js").AtFoot();
+
+    var recordLabelsJson = Json.Encode(Model.RecordLabels);
+}
+
+<fieldset data-record-labels="@recordLabelsJson" data-prefix="@ViewData.TemplateInfo.GetFullHtmlFieldName("")">
+    @*<legend>@T(Model.ContentField.DisplayName)</legend>*@
+    <div class="group">
+        <ul class="recordLabels-input">
+            <li>
+                <div class="pull-left label"><h3>@T("Record Labels")</h3></div>
+                <div class="pull-right"><a href="@Url.Action("Create", "RecordLabelsAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                <div class="clear"></div>
+                @Html.DropDownList("AllRecordLabels", new SelectList(Model.AllRecordLabels.OrderBy(x => x.Name), "Id", "Name"), T("Select record label to add...").ToString(), new { @class = "all-recordLabels" })
+            </li>
+            <li>
+                <br />
+                <input type="button" class="button grey" value="Add" data-bind="click: add, enable: addEnabled" />
+            </li>
+        </ul>
+    </div>
+    <table class="items recordLabels" data-bind="visible: hasRecordLabels">
+        <thead>
+            <tr>
+                <th>@T("Name")</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: recordLabels">
+            <tr>
+                <td>
+                    <input type="hidden" data-bind="attr: { name: idInputName }, value: id" />
+                    <input type="hidden" data-bind="attr: { name: nameInputName }, value: name" />
+                    <a href="#" data-bind="text: name, attr: { href: editUrl($element) }" data-edit-url="@Url.Action("Edit", "RecordLabelsAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                </td>
+                <td><a href="#" class="delete button grey" data-bind="click: $parent.remove">@T("Remove")</a></td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>

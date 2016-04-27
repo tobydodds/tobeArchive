@@ -1,0 +1,10 @@
+﻿@model Tobe.Collection.ViewModels.CreateGenreViewModel
+<h2>@T("New Genre")</h2>           
+@using (Html.BeginFormAntiForgeryPost("Create")) {
+    @Html.LabelFor(c => c.Name)
+    @Html.TextBoxFor(c => c.Name)
+    @Html.ValidationMessageFor(c => c.Name)
+    <div style="margin-top: 10px;">
+        <button type="submit" class="primaryAction">@T("Create")</button>
+    </div>
+}

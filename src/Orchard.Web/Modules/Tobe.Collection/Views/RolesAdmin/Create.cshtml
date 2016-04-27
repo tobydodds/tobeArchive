@@ -1,0 +1,12 @@
+﻿@model Tobe.Collection.ViewModels.CreateRoleViewModel
+<h2>@T("New Role")</h2>
+@using (Html.BeginFormAntiForgeryPost("Create")) {
+    @Html.Hidden("returnUrl", Request.QueryString["returnUrl"])
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name, new { @class = "text medium" })
+    @Html.ValidationMessageFor(a => a.Name)
+    
+    <div style="margin-top: 10px;">
+        <button type="submit" class="primaryAction">@T("Create")</button>
+    </div>
+}
