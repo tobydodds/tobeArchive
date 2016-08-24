@@ -396,7 +396,6 @@
     <None Include="bundleconfig.json" />
     <Content Include="Views\Layout-Homepage.cshtml" />
     <Content Include="Views\FullCatalogReport.cshtml" />
-    <Content Include="Views\Content-Album.Summary.cshtml" />
     <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
