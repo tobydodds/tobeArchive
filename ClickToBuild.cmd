@@ -25,7 +25,7 @@ SET target=%1
 SET project=%2
 SET solution=%3
 
-IF "%target%" == "" SET target=Build
+IF "%target%" == "" SET target=Precompiled
 IF "%project%" == "" SET project=Orchard.proj
 IF "%solution%" == "" SET solution=src\Orchard.sln
 
