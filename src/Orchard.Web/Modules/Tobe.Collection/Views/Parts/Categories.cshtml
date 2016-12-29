@@ -1,0 +1,24 @@
+﻿@using Tobe.Collection.Helpers
+@using Tobe.Collection.Models
+@using Orchard.Core.Title.Models
+@{
+    var contentItem = Model.ContentItem;
+    var autoroutePart = contentItem.AutoroutePart.DisplayAlias;
+    var categoriesPart = (CategoriesContainerPart)contentItem.CategoriesContainerPart;
+    var categories = categoriesPart.Categories.ToArray();
+}
+
+<div style="width: 25%; float: left">
+    <span class="labels">Genre(s)</span>
+</div>
+<div style="width: 75%; float: left">
+    @if (categories.Any())
+    {
+    foreach (var category in categories)
+    {
+    var genreName = category.Genre.Name;
+    @Html.ActionLink(genreName, "DetailsByName", "Genre", new { area = "Tobe.Collection", genreName }, null)
+        @category.Genre.Name
+    }
+    }
+</div>

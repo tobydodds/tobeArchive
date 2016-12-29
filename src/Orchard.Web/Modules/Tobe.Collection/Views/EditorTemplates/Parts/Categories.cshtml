@@ -1,0 +1,48 @@
+﻿@model Tobe.Collection.ViewModels.CategoriesContainerViewModel
+@{
+    Style.Include("tobe-admin.css");
+    Style.Include("categories-editor.css");
+    Script.Require("jQueryUI_Autocomplete");
+    Script.Include("knockout.js").AtFoot();
+    Script.Include("categories-editor.js").AtFoot();
+
+    var categories = Json.Encode(Model.Categories);
+}
+<div id="categoriesEditor" data-categories="@categories">
+    <fieldset>
+        <div class="group">
+            <ul class="categories-input">
+                <li>
+                    <div class="pull-left"><h3>@T("Genres")</h3></div>
+                    <div class="pull-right"><a href="@Url.Action("Create", "GenresAdmin", new { area = "Tobe.Collection", returnUrl = Request.Path })">@T("Add New")</a></div>
+                    <div class="clear"></div>
+                    @Html.DropDownList("AllGenres", new SelectList(Model.AllGenres, "Id", "Name"), T("Select genre to add...").ToString(), new { @class = "all-genres" })
+                </li>
+                <li>
+                    <br />
+                    <input type="button" class="button grey" value="Add" data-bind="click: addCategory, enable: addCategoryEnabled" />
+                </li>
+            </ul>
+        </div>
+        <table class="items categories" data-bind="visible: hasCategories">
+            <thead>
+                <tr>
+                    <th>@T("Genre") </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: categories">
+                <tr data-bind="visible: !removed()">
+                    <td>
+                        <input type="hidden" data-bind="attr: { name: categoryIdInputName }, value: id" />
+                        <input type="hidden" data-bind="attr: { name: genreIdInputName }, value: genre.id" />
+                        <input type="hidden" data-bind="attr: { name: genreNameInputName }, value: genre.name" />
+                        <input type="hidden" data-bind="attr: { name: removedInputName }, value: removed" />
+                        <a href="#" data-bind="text: genre.name, attr: { href: genre.editUrl($element) }" data-edit-url="@Url.Action("Edit", "GenresAdmin", new { id = "(id)", area = "Tobe.Collection" })"></a>
+                    </td>
+                    <td><a href="#" class="delete button grey" data-bind="click: $parent.removeCategory">@T("Remove")</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>

@@ -25,10 +25,10 @@
         @Html.LabelFor(m => m.FormatId, T("Format"))
         @Html.EditorFor(m => m.FormatId, new { Formats = Model.AvailableFormats })
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(m => m.LengthId, T("Length"))
         @Html.EditorFor(m => m.LengthId, new { Lengths = Model.AvailableLengths })
-    </div>
+    </div>*@
     <div class="form-group">
         @Html.LabelFor(m => m.CatalogNumber, T("Catalog Number"))
         @Html.TextBoxFor(m => m.CatalogNumber, new { @class = "text medium" })

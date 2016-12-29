@@ -2,6 +2,7 @@
 <Placement>
   <Place Fields_Boolean="-"/>
   <Place Parts_Artists_Edit="Content:5" />
+  <Place Parts_Categories_Edit="Content:20" />
   <Place Parts_Credits_Edit="Content:21" />
   <Place Parts_Album_Edit="Content:10" />
   <Place Fields_Countries_Edit="Content:12" />
@@ -18,11 +19,12 @@
       <Place
            Parts_Artists="Content:1"
            Parts_Album="Content:10"
-           Parts_Credits="Content:15"/>
+           Parts_Categories="Content:16"
+           Parts_Credits="Content:15"
+           Parts_ImageGallery="Content:before"/>
         <Place Fields_Countries="Content:12" />
         <Place Fields_Genres="Content:13" />
         <Place Fields_RecordLabels="Content:14" />
-        <Place Fields_ImageMultiPicker="Content:16" />
     </Match>
     <Match DisplayType="Summary">
       <Place Parts_Common_Body_Summary="-"

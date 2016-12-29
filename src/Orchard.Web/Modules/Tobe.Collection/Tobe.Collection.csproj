@@ -107,14 +107,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\agent-autocomplete.js" />
+    <Content Include="Scripts\genres-field-editor.js" />
+    <Content Include="Scripts\categories-editor.js" />
     <Content Include="Scripts\artists-editor.js" />
     <Content Include="Scripts\record-labels-field-editor.js" />
     <Content Include="Scripts\agents-field-editor.js" />
     <Content Include="Scripts\countries-field-editor.js" />
     <Content Include="Scripts\credits-editor.js" />
-    <Content Include="Scripts\genres-field-editor.js" />
+    <Content Include="Scripts\genres-field-editor-bak.js" />
     <Content Include="Scripts\knockout.js" />
     <Content Include="Scripts\pager.js" />
+    <Content Include="Styles\categories-editor.css" />
     <Content Include="Styles\credits-editor.css" />
     <Content Include="Styles\tobe-admin.css" />
     <Content Include="Web.config" />
@@ -141,6 +144,7 @@
     <Compile Include="Controllers\RecordLabelsAdminController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Drivers\AlbumPartDriver.cs" />
+    <Compile Include="Drivers\CategoriesContainerPartDriver.cs" />
     <Compile Include="Drivers\CountriesFieldDriver.cs" />
     <Compile Include="Drivers\ArtistsContainerPartDriver.cs" />
     <Compile Include="Drivers\CreditsContainerPartDriver.cs" />
@@ -150,12 +154,14 @@
     <Compile Include="Fields\RecordLabelsField.cs" />
     <Compile Include="Fields\GenresField.cs" />
     <Compile Include="Handlers\AlbumPartHandler.cs" />
+    <Compile Include="Handlers\CategoriesContainerPartHandler.cs" />
     <Compile Include="Handlers\CountryFieldHandler.cs" />
     <Compile Include="Handlers\ArtistsContainerPartHandler.cs" />
     <Compile Include="Handlers\CreditsContainerPartHandler.cs" />
     <Compile Include="Handlers\RecordLabelFieldHandler.cs" />
     <Compile Include="Handlers\GenreFieldHandler.cs" />
     <Compile Include="Helpers\ContentExtensions.cs" />
+    <Compile Include="Helpers\DistinctGenreComparer.cs" />
     <Compile Include="Helpers\DistinctAgentComparer.cs" />
     <Compile Include="Helpers\DistinctCountryComparer.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
@@ -176,10 +182,13 @@
     <Compile Include="Menus\Pages.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\Agent.cs" />
+    <Compile Include="Models\AlbumGenreCategoryRelation.cs" />
     <Compile Include="Models\AlbumAgentArtistRelation.cs" />
     <Compile Include="Models\AlbumAgentCreditRelation.cs" />
     <Compile Include="Models\AlbumPart.cs" />
     <Compile Include="Models\AlbumPartRecord.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoriesContainerPart.cs" />
     <Compile Include="Models\ContentCountries.cs" />
     <Compile Include="Models\ContentRecordLabels.cs" />
     <Compile Include="Models\ContentGenres.cs" />
@@ -189,6 +198,7 @@
     <Compile Include="Models\ArtistsContainerPart.cs" />
     <Compile Include="Models\CreditsContainerPart.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\ICategoryDisplay.cs" />
     <Compile Include="Models\IArtistDisplay.cs" />
     <Compile Include="Models\ICreditDisplay.cs" />
     <Compile Include="Models\Format.cs" />
@@ -197,13 +207,16 @@
     <Compile Include="Models\RecordLabel.cs" />
     <Compile Include="Models\Delimiter.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Services\AlbumGenreCategoryRelationComparer.cs" />
     <Compile Include="Services\AlbumAgentArtistRelationComparer.cs" />
     <Compile Include="Services\AlbumAgentCreditRelationComparer.cs" />
     <Compile Include="Services\AlbumManager.cs" />
+    <Compile Include="Services\CategoriesManager.cs" />
     <Compile Include="Services\CountryManager.cs" />
     <Compile Include="Services\ArtistsManager.cs" />
     <Compile Include="Services\CreditsManager.cs" />
     <Compile Include="Services\CurrentContentAccessor.cs" />
+    <Compile Include="Services\ICategoriesManager.cs" />
     <Compile Include="Services\IArtistsManager.cs" />
     <Compile Include="Services\RecordLabelManager.cs" />
     <Compile Include="Services\GenreManager.cs" />
@@ -217,6 +230,8 @@
     <Compile Include="ViewModels\AgentsIndexViewModel.cs" />
     <Compile Include="ViewModels\AgentViewModel.cs" />
     <Compile Include="ViewModels\AlbumViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\CategoriesContainerViewModel.cs" />
     <Compile Include="ViewModels\CountriesIndexViewModel.cs" />
     <Compile Include="ViewModels\CountriesViewModel.cs" />
     <Compile Include="ViewModels\CountryViewModel.cs" />
@@ -317,6 +332,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Content-Album.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Categories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\Categories.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

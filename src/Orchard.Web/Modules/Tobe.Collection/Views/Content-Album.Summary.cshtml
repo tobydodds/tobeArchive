@@ -11,30 +11,30 @@
 
     @if (WorkContext.CurrentUser != null)
     {
-        <div>
-            <div style="float: left">
+        <div style="float: left; padding-bottom: 3px; width: 100%; display:inline">
+            <div style="display: inline">
                 @album.ArtistDisplayName
             </div>
-            <div style="float: left; margin-left: 8px"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
+            <div style="margin-left: 8px; display: inline"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
             @if (album.OriginalReleaseDate != null)
             {
-                <div style="float: left; margin-left: 8px">(@album.OriginalReleaseDate)</div>
+                <div style="margin-left: 8px; display:inline">(@album.OriginalReleaseDate)</div>
             }
-            <div style="float: left; margin-left: 8px">@album.Format.Name</div>
-            <div class="editlink" style="float: left; margin: 0 20px 0 20px !important;">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
+            <div style="margin-left: 8px; display: inline">@album.Format.Name</div>
+            <div class="editlink" style="margin-left: 8px; display: inline">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
         </div>
-        <br/>
-        }
-        else {
-            <div>
-                <div style="float: left">
-                    @album.ArtistDisplayName
-                </div>
-                <div style="float: left; margin-left: 8px"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
-                @if (album.OriginalReleaseDate != null) {
-                    <div style="float: left; margin-left: 8px">(@album.OriginalReleaseDate)</div>
-                }
-                <div style="float: left; margin-left: 8px">@album.Format.Name</div>
-                </div>
-            <br/>            
+    }
+    else
+    {
+        <div style="float: left; padding-bottom: 3px; width: 100%; display:inline">
+            <div style="display: inline">
+                @album.ArtistDisplayName
+            </div>
+            <div style="margin-left: 8px; display: inline"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
+            @if (album.OriginalReleaseDate != null)
+            {
+                <div style="margin-left: 8px; display:inline">(@album.OriginalReleaseDate)</div>
+            }
+            <div style="margin-left: 8px; display:inline">@album.Format.Name</div>
+        </div>            
         }

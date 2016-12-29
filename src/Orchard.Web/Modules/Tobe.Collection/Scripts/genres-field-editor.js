@@ -31,22 +31,23 @@
         }
 
         this.selectedGenre = function () {
-            var selectedOption = scope.find(".all-genres option:selected");
-
-            if (selectedOption.val() == "") {
+            var allGenresElement = scope.find(".all-genres");
+            var genreId = parseInt(allGenresElement.data("genre-id"));
+            var genreName = allGenresElement.data("genre-name");
+            
+            if (isNaN(genreId)) {
                 return null;
             }
 
             return new Genre({
-                Id: parseInt(selectedOption.val()),
-                Name: selectedOption.text()
-            }, 0, self.prefix);
-
+                Id: genreId,
+                Name: genreName,
+            }, null, prefix);
         };
 
         this.addEnabled = ko.observable(false);
 
-        this.hasGenres = ko.computed(function() {
+        this.hasGenres = ko.computed(function () {
             return this.genres().length > 0;
         }, this);
 
@@ -74,7 +75,7 @@
             var genres = this.genres();
             for (var i = 0; i < genres.length; i++) {
                 var genre = genres[i];
-                if (genre.id() == id) {
+                if (genre.id() === id) {
                     return genre;
                 }
             }
@@ -93,20 +94,37 @@
             }
         };
 
-        this.onGenreSelected = function() {
+        this.onGenreSelected = function(e, ui) {
+            var genreId = ui.item.value;
+            var genreName = ui.item.label;
+            $(this).data("genre-id", genreId);
+            $(this).data("genre-name", genreName);
+            $(this).val(genreName);
             self.syncAddEnabled();
+            e.preventDefault();
         };
     };
 
     $(function () {
-        var genresEditors = $("[data-genres]");
+        var genresEditors = $(".genres-field");
 
         genresEditors.each(function () {
-            var genresEditor = $(this);
-            var genresViewModel = new GenresViewModel(genresEditor, genresEditor.data("genres"), genresEditor.data("prefix"));
+            var genreEditor = $(this);
+            var genresViewModel = new GenresViewModel(genreEditor, genreEditor.data("genres"), genreEditor.data("prefix"));
 
-            genresEditor.find(".all-genres").on("change", genresViewModel.syncAddEnabled);
-            ko.applyBindings(genresViewModel, genresEditor[0]);
+            genreEditor.find(".all-genres").on("change", genresViewModel.syncAddEnabled);
+            ko.applyBindings(genresViewModel, genreEditor[0]);
+            
+            genreEditor.find(".all-genres").autocomplete({
+                select: genresViewModel.onGenreSelected,
+                source: function(request, response) {
+                    var url = genreEditor.find(".all-genres").data("source-url") + "?term=" + request.term;
+                    $.ajax({
+                        url: url,
+                        cache: false
+                    }).then(response);
+                }
+            });
         });
     });
 

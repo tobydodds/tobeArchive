@@ -1,0 +1,33 @@
+﻿ul.categories-input {
+    list-style: none;
+}
+
+ul.categories-input a,
+ul.categories-input .label {
+    font-size: 0.8em;
+}
+
+ul.categories-input .label {
+    font-weight: bold;
+}
+
+ul.categories-input li {
+    float: left;
+    margin-right: 1.2em;
+}
+
+ul.categories-input:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+select.all-genres{
+    min-width: 500px;
+}
+table.items.categories {
+    width: auto;
+    min-width: 500px;
+}

@@ -282,6 +282,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downplay.Orchard.LayoutSele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrap", "Orchard.Web\Themes\Bootstrap\Bootstrap.csproj", "{50ED7805-208C-4E35-8360-572E8B4E9CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mello.ImageGallery", "Orchard.Web\Modules\Mello.ImageGallery\Mello.ImageGallery.csproj", "{EACC1A53-532B-486B-BC51-BA65ACBA2B61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CodeCoverage|Any CPU = CodeCoverage|Any CPU
@@ -1315,6 +1317,18 @@ Global
 		{50ED7805-208C-4E35-8360-572E8B4E9CC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50ED7805-208C-4E35-8360-572E8B4E9CC2}.Stage|Any CPU.ActiveCfg = Release|Any CPU
 		{50ED7805-208C-4E35-8360-572E8B4E9CC2}.Stage|Any CPU.Build.0 = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.CodeCoverage|Any CPU.ActiveCfg = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.CodeCoverage|Any CPU.Build.0 = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Coverage|Any CPU.ActiveCfg = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Coverage|Any CPU.Build.0 = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.FxCop|Any CPU.ActiveCfg = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.FxCop|Any CPU.Build.0 = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Stage|Any CPU.ActiveCfg = Release|Any CPU
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61}.Stage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1404,6 +1418,7 @@ Global
 		{D4E8F7C8-2DB2-4C50-A422-DA1DF1E3CC73} = {E9C9F120-07BA-4DFB-B9C3-3AFB9D44C9D5}
 		{FD5F4F61-5819-41CB-8703-D1DFBAD8A45B} = {E9C9F120-07BA-4DFB-B9C3-3AFB9D44C9D5}
 		{50ED7805-208C-4E35-8360-572E8B4E9CC2} = {74492CBC-7201-417E-BC29-28B4C25A58B0}
+		{EACC1A53-532B-486B-BC51-BA65ACBA2B61} = {E9C9F120-07BA-4DFB-B9C3-3AFB9D44C9D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4

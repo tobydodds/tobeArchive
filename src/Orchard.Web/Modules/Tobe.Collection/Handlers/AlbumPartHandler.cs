@@ -48,8 +48,15 @@ namespace Tobe.Collection.Handlers {
 
             var artistsPart = part.As<ArtistsContainerPart>();
             if (artistsPart != null) {
-                foreach (var credit in artistsPart.Artists) {
-                    context.DocumentIndex.Add("album-artists", credit.Agent.Name).Analyze().Store();
+                foreach (var artist in artistsPart.Artists) {
+                    context.DocumentIndex.Add("album-artists", artist.Agent.Name).Analyze().Store();
+                }
+            }
+
+            var categoriesPart = part.As<CategoriesContainerPart>();
+            if (categoriesPart != null) {
+                foreach (var category in categoriesPart.Categories) {
+                    context.DocumentIndex.Add("album-categories", category.Genre.Name).Analyze().Store();
                 }
             }
 
