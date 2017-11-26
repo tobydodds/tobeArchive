@@ -64,6 +64,9 @@
     <Reference Include="Orchard.ImportExport">
       <HintPath>..\Orchard.ImportExport\bin\Orchard.ImportExport.dll</HintPath>
     </Reference>
+    <Reference Include="Orchard.Search">
+      <HintPath>..\Orchard.Search\bin\Orchard.Search.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations">

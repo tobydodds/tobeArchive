@@ -1391,5 +1391,16 @@ namespace Tobe.Collection {
 
             return 4;
         }
+        public int UpdateFrom4()
+        {
+
+            ContentDefinitionManager.AlterTypeDefinition("Album", type => type
+                .WithPart("AlbumPart")
+                .Indexed("Search")
+                );
+
+            return 5;
+        }
+
     }
 }

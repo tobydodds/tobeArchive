@@ -13,6 +13,7 @@ namespace Tobe.Collection.ViewModels {
         public int? LengthId { get; set; }
         [MaxLength(300)]
         public string ArtistDisplayName { get; set; }
+        public string ArtistNameSort { get; set; }
         public string CatalogNumber { get; set; }
         public string LocalNumber { get; set; }
         public string Description { get; set; }

@@ -50,6 +50,7 @@ namespace Tobe.Collection.Drivers {
                     FormatId = part.Record.Format != null ? part.Record.Format.Id : default(int?),
                     LengthId = part.Record.Length != null ? part.Record.Length.Id : default(int?),
                     ArtistDisplayName = part.ArtistDisplayName,
+                    ArtistNameSort = part.ArtistNameSort,
                     CatalogNumber = part.CatalogNumber,
                     LocalNumber = part.LocalNumber,
                     Description = part.Description,
@@ -75,6 +76,7 @@ namespace Tobe.Collection.Drivers {
                             part.Format = viewModel.FormatId != null ? _albumManager.GetFormat(viewModel.FormatId.Value) : default(Format);
                             part.Length = viewModel.LengthId != null ? _albumManager.GetLength(viewModel.LengthId.Value) : default(Length);
                             part.ArtistDisplayName = viewModel.ArtistDisplayName;
+                            part.ArtistNameSort = viewModel.ArtistNameSort;
                             part.CatalogNumber = viewModel.CatalogNumber;
                             part.LocalNumber = viewModel.LocalNumber;
                             part.Description = viewModel.Description;

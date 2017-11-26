@@ -35,6 +35,11 @@ namespace Tobe.Collection.Models {
             set { Record.ArtistDisplayName = value; }
         }
 
+        public string ArtistNameSort {
+            get { return Record.ArtistNameSort; }
+            set { Record.ArtistNameSort = value; }
+        }
+
         public string CatalogNumber {
             get { return Record.CatalogNumber; }
             set { Record.CatalogNumber = value; }

@@ -38,6 +38,13 @@ namespace Tobe.Collection.Handlers {
 
         private void Index(IndexContentContext context, AlbumPart part) {
 
+            if (!String.IsNullOrWhiteSpace(part.ArtistDisplayName)) {
+                context.DocumentIndex.Add("album-artist", part.ArtistDisplayName).Analyze().Store();
+            }
+
+            if (!String.IsNullOrWhiteSpace(part.ArtistNameSort))  {
+                context.DocumentIndex.Add("artist-sort", part.ArtistNameSort).Analyze().Store();
+            }
             if (!String.IsNullOrWhiteSpace(part.Description)) {
                 context.DocumentIndex.Add("album-description", part.Description).Analyze().Store();
             }
@@ -56,7 +63,7 @@ namespace Tobe.Collection.Handlers {
             var categoriesPart = part.As<CategoriesContainerPart>();
             if (categoriesPart != null) {
                 foreach (var category in categoriesPart.Categories) {
-                    context.DocumentIndex.Add("album-categories", category.Genre.Name).Analyze().Store();
+                    context.DocumentIndex.Add("album-categories", category.Genre.NameSearch).Analyze().Store();
                 }
             }
 

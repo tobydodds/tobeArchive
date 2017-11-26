@@ -10,6 +10,7 @@ namespace Tobe.Collection.Models {
         public virtual Format Format { get; set; }
         public virtual Length Length { get; set; }
         public virtual string ArtistDisplayName { get; set; }
+        public virtual string ArtistNameSort { get; set; }
         public virtual string CatalogNumber { get; set; }
         public virtual string LocalNumber { get; set; }
         public virtual string Description { get; set; }
