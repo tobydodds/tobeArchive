@@ -327,6 +327,17 @@ $(function () {
                 window.location = url;
             };
 
+            self.replaceMedia = function (item) {
+                var url = settings.replaceUrl;
+                var ids = [];
+                var folder = "";
+                if (self.displayed()) {
+                    folder = self.displayed();
+                }
+                viewModel.selection().forEach(function (item) { ids.push(item.data.id); });
+                var actionurl = url + '?folderPath=' + encodeURIComponent(folder) + "&replaceId=" + encodeURIComponent(ids[0]);
+                window.location = actionurl;
+            }
             var selectFolderOrRecent = function () {
                 if (self.displayed()) {
                     self.selectFolder(self.displayed());
@@ -372,7 +383,8 @@ $(function () {
                 $.ajax({
                     type: "GET",
                     url: url,
-                    cache: false
+                    cache: false,
+                    dataType: 'json'
                 }).done(function (data) {
                     var newChildFolders = data.childFolders;
 
@@ -575,6 +587,7 @@ $(function () {
                     viewModel.clearSelection();
                 } else {
                     console.log('failed to delete media items');
+                    alert(settings.unauthorizedMessage);
                 }
                 return false;
             });
@@ -609,6 +622,7 @@ $(function () {
                     viewModel.getMediaItems(viewModel.pageCount);
                 } else {
                     console.log('failed to clone media items');
+                    alert(settings.unauthorizedMessage);
                 }
                 return false;
             });
