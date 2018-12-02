@@ -41,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
     <CodeAnalysisRuleSet>..\OrchardBasicCorrectness.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -54,6 +55,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
     <NoWarn>0436</NoWarn>
@@ -174,6 +176,7 @@
   <ItemGroup>
     <Compile Include="ContentManagement\Extensions\DriverResultExtensions.cs" />
     <Compile Include="ContentManagement\Handlers\CloneContentContext.cs" />
+    <Compile Include="Data\Migration\Interpreters\PostgreSqlCommandInterpreter.cs" />
     <Compile Include="DisplayManagement\Descriptors\ShapePlacementStrategy\DefaultPlacementParseMatchProviders.cs" />
     <Compile Include="DisplayManagement\Descriptors\ShapePlacementStrategy\IPlacementParseMatchProvider.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
