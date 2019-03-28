@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile>true</UseGlobalApplicationHostFile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -157,6 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\galleries\big-ears-2019\20190321_192303.jpg" />
+    <Content Include="Images\galleries\big-ears-2019\20190321_192329.jpg" />
+    <Content Include="Images\galleries\big-ears-2019\20190321_192347.jpg" />
+    <Content Include="Images\galleries\big-ears-2019\20190321_200057.jpg" />
     <Content Include="Refresh.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -240,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\icons\" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

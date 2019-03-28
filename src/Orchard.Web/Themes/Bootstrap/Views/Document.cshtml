@@ -4,6 +4,10 @@
 @{
     RegisterLink(new LinkEntry { Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content("~/modules/orchard.themes/Content/orchard.ico") });
 
+    <link rel="stylesheet" type="text/css" href="/Themes/Bootstrap/Assets/plugins/slick/slick.css" />
+    // Add the new slick-theme.css if you want the default styling
+    <link rel="stylesheet" type="text/css" href="/Themes/Bootstrap/Assets/plugins/slick/slick-theme.css" />
+
     Style.Include("font-awesome.min.css");
     Style.Include("font-awesome-ie7.min.css").UseCondition("IE 7");
     Style.Include("swipebox.min.css");
@@ -43,7 +47,7 @@
     <title>@Html.Title(title, siteName)</title>
 
     @Display(Model.Head)
-<script>(function (d) { d.className = "dyn " + d.className.substring(6, d.className.length); })(document.documentElement);</script>
+    <script>(function (d) { d.className = "dyn " + d.className.substring(6, d.className.length); })(document.documentElement);</script>
 
 </head>
 <body style="@(useStickyFooter ? "height: 100%;" : string.Empty) @(useFixedNav ? "padding-top: 50px;" : "padding-top: 0;")">
@@ -52,29 +56,34 @@
         @T("or") @Html.Link(T("install Google Chrome Frame"), "http://www.google.com/chromeframe/?redirect=true") @T("to better experience this site").</p>
     <![endif]-->
     @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
-@Display(Model.Body)
-@Display(Model.Tail)
+    @Display(Model.Body)
+    @Display(Model.Tail)
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+    @*<script type="text/javascript">
+            $(document).ready(function () {
 
-            /* Basic Gallery */
-            $('.swipebox').swipebox();
+                /* Basic Gallery */
+                $('.swipebox').swipebox();
 
-            /* Video */
-            $('.swipebox-video').swipebox();
+                /* Video */
+                $('.swipebox-video').swipebox();
 
-            /* Dynamic Gallery */
-            $('#gallery').click(function (e) {
-                e.preventDefault();
-                $.swipebox([
-					{ href: 'http://swipebox.csag.co/mages/image-1.jpg', title: 'My Caption' },
-					{ href: 'http://swipebox.csag.co/images/image-2.jpg', title: 'My Second Caption' }
-                ]);
+                /* Dynamic Gallery */
+                $('#gallery').click(function (e) {
+                    e.preventDefault();
+                    $.swipebox([
+                        { href: 'http://swipebox.csag.co/mages/image-1.jpg', title: 'My Caption' },
+                        { href: 'http://swipebox.csag.co/images/image-2.jpg', title: 'My Second Caption' }
+                    ]);
+                });
+
             });
+        </script>*@
 
-        });
-    </script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/Themes/Bootstrap/Assets/plugins/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/Themes/Bootstrap/Scripts/tobe-archive.js"></script>
 </body>
 </html>

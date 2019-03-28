@@ -10,3 +10,23 @@ ul { list-style: none;margin: 0;padding-left:0;}
 .top-ten {margin-top: 10px}
 
 .top-twenty {margin-top: 20px}
+
+.gallery-page h2 {
+    color:#aaa!important;
+    text-transform:uppercase;
+    font-size:medium;
+    margin-top:30px;
+}
+.video {
+    margin-top: 40px;
+    margin-bottom: 40px
+}
+
+.image-wrapper {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.image img {
+    width: 100%
+}

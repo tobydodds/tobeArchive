@@ -1,6 +1,6 @@
 <Placement>
   <Match ContentType="Page">
-    <Place Parts_Share_ShareBar="Content:after"/>
+      <Place Parts_Common_Body="Content:1"/>      
   </Match>
   
   <Match ContentType="Blog">
