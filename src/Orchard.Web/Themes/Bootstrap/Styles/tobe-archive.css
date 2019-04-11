@@ -19,14 +19,20 @@ ul { list-style: none;margin: 0;padding-left:0;}
 }
 .video {
     margin-top: 40px;
-    margin-bottom: 40px
+    margin-bottom: 5px;
 }
-
 .image-wrapper {
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 }
-
 .image img {
+    margin-top: 40px;
+    margin-bottom: 5px;
     width: 100%
+}
+.first {
+    margin-top: -20px
+}
+.row {
+    float:left;
 }

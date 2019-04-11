@@ -157,6 +157,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\plugins\slick\ajax-loader.gif" />
+    <Content Include="Assets\plugins\slick\fonts\slick.svg" />
+    <Content Include="Assets\plugins\slick\slick-theme.css" />
+    <Content Include="Assets\plugins\slick\slick.css" />
+    <Content Include="Assets\plugins\slick\slick.js" />
+    <Content Include="Assets\plugins\slick\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Images\galleries\big-ears-2019\20190321_192303.jpg" />
     <Content Include="Images\galleries\big-ears-2019\20190321_192329.jpg" />
@@ -191,6 +197,15 @@
   <ItemGroup>
     <Content Include="Config\Sites.config" />
     <Content Include="packages.config" />
+    <Content Include="Assets\web.config" />
+    <Content Include="Assets\plugins\slick\config.rb" />
+    <Content Include="Assets\plugins\slick\fonts\slick.eot" />
+    <Content Include="Assets\plugins\slick\fonts\slick.ttf" />
+    <Content Include="Assets\plugins\slick\fonts\slick.woff" />
+    <Content Include="Assets\plugins\slick\slick-theme.less" />
+    <Content Include="Assets\plugins\slick\slick-theme.scss" />
+    <Content Include="Assets\plugins\slick\slick.less" />
+    <Content Include="Assets\plugins\slick\slick.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
