@@ -1,0 +1,47 @@
+﻿@using Tobe.Collection.Helpers
+@using Tobe.Collection.Models
+@using Orchard.Core.Title.Models
+@{
+    var contentItem = Model.ContentItem;
+    var titlePart = (TitlePart)contentItem.TitlePart;
+    var autoroutePart = contentItem.AutoroutePart.DisplayAlias;
+    var album = (AlbumPart)contentItem.AlbumPart;
+    var releaseDate = album.OriginalReleaseDate != null ? "{0} ({1:yyyy})" : "{0}";
+    var purchaseDate = album.PurchaseDate.Value.ToString("MM/yy");
+}
+
+    @if (WorkContext.CurrentUser != null)
+    {
+        <div style="float: left; padding-bottom: 3px; width: 100%; display:inline">
+            <div style="display: inline;color:#909090">
+                @purchaseDate 
+            </div>
+            <div style="margin-left: 8px; display: inline">
+                @album.ArtistDisplayName
+            </div>
+            <div style="margin-left: 8px; display: inline"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
+            @if (album.OriginalReleaseDate != null)
+            {
+                <div style="margin-left: 8px; display:inline">(@album.OriginalReleaseDate)</div>
+            }
+            <div style="margin-left: 8px; display: inline">@album.Format.Name</div>
+            <div class="editlink" style="margin-left: 8px; display: inline">@Html.ItemAdminLink(String.Format("EDIT"), album)</div>
+        </div>
+    }
+    else
+    {
+        <div style="float: left; padding-bottom: 3px; width: 100%; display:inline">
+            <div style="display: inline;color:#909090">
+                @purchaseDate
+            </div>
+            <div style="display: inline">
+                @album.ArtistDisplayName
+            </div>
+            <div style="margin-left: 8px; display: inline"><i>@Html.ItemDisplayLink(String.Format(album.Name), album)</i></div>
+            @if (album.OriginalReleaseDate != null)
+            {
+                <div style="margin-left: 8px; display:inline">(@album.OriginalReleaseDate)</div>
+            }
+            <div style="margin-left: 8px; display:inline">@album.Format.Name</div>
+        </div>            
+        }
